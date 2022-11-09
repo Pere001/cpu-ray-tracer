@@ -1,6 +1,8 @@
 # Real-Time CPU Ray Tracer
 A simple real-time CPU ray tracer made in a week.
 
+![img](ray_tracer_screenshot.png "ray_tracer_screenshot.png")
+
 Features:
 * Controls: WASD to move, Space to ascend, Shift to descend, left click to orient camera, Escape to exit.
 
