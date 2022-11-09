@@ -1,6 +1,5 @@
-# Real Time CPU Raytracer
-A simple CPU raytracer made in a week.
-
+# Real-Time CPU Ray Tracer
+A simple real-time CPU ray tracer made in a week.
 
 Features:
 * Controls: WASD to move, Space to ascend, Shift to descend, left click to orient camera, Escape to exit.
@@ -27,3 +26,5 @@ To compile with MSVC:
 - Open a command prompt.
 - Locate the ``vcvarsall.bat`` file in your VS installation directory and call it with argument ``x64``.
 - Call ``build.bat``
+
+(11/2022)
