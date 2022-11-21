@@ -330,58 +330,6 @@ void DeallocateMemory(void * ptr){
     free(ptr);
 }
 
-
-static void Win32ProcessPendingMessages(){
-    MSG message;   
-    while(PeekMessage(&message, 0, 0, 0, PM_REMOVE))
-    {
-        switch(message.message){
-            case WM_QUIT:
-            {
-                globalRunning = false;
-            }break;
-
-            case WM_SYSKEYDOWN:
-            case WM_SYSKEYUP:
-            case WM_KEYDOWN:
-            case WM_KEYUP:
-            {
-                u32 vkCode = (u32)message.wParam;
-                bool wasDown = ((message.lParam & (1 << 30)) != 0);
-                bool isDown = ((message.lParam & (1 << 31)) == 0);
-
-                if (wasDown != isDown){
-                    
-                    switch(vkCode){
-                    case VK_ESCAPE:
-                    case VK_RETURN:
-                    case VK_SPACE:
-                    {
-                        if (isDown){
-                            globalRunning = false;
-                        }
-                    }
-                    }
-
-                    // Alt + F4: Close
-                    if (isDown){
-                        s32 altKeyIsDown = (message.lParam & (1 << 29));
-                        if ((vkCode == VK_F4) && altKeyIsDown){
-                            globalRunning = false;
-                        }
-                    }
-                }
-            }break;
-
-            default:
-            {
-                TranslateMessage(&message);
-                DispatchMessage(&message);
-            }break;
-        }
-    }
-}
-
 LRESULT CALLBACK Win32MainWindowCallback(HWND window, UINT   message, WPARAM wParam, LPARAM lParam) {
     LRESULT result = 0;
 
@@ -401,7 +349,6 @@ LRESULT CALLBACK Win32MainWindowCallback(HWND window, UINT   message, WPARAM wPa
     
     return result;
 }
-
 
 
 
